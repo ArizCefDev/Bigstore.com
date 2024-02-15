@@ -1,4 +1,6 @@
 using AutoMapper;
+using Business.Abstract;
+using Business.Concrete;
 using Business.Config;
 using DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +23,8 @@ var mapcon = new MapperConfiguration(mc =>
 builder.Services.AddSingleton(mapcon.CreateMapper());
 
 //Services
-//builder.Services.AddScoped<IValyutaService, ValyutaService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

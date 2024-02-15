@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DTO.EntityDTO.CategoryDTO>
+
+<li class="dropdown ">
+    <a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Kateqoriyalar<b class="caret"></b></span></a>
+    <ul class="dropdown-menu multi">
+        <div class="row">
+            <div class="col-sm-3">
+                <ul class="multi-column-dropdown">
+
+                    @foreach (var item in Model.Take(5))
+                    {
+                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>@item.Name</a></li>
+
+                    }
+                </ul>
+
+            </div>
+            <div class="col-sm-3">
+
+                <ul class="multi-column-dropdown">
+                    @foreach (var item in Model.Skip(5).Take(5))
+                    {
+                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>@item.Name</a></li>
+
+                    }
+                </ul>
+
+            </div>
+            <div class="col-sm-3">
+
+                <ul class="multi-column-dropdown">
+                    @foreach (var item in Model.Skip(10).Take(5))
+                    {
+                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>@item.Name</a></li>
+
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-3 w3l">
+                <a href="kitchen.html"><img src="~/Tema/images/me.png" class="img-responsive" alt=""></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </ul>
+</li>

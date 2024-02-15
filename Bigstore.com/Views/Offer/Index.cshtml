@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<DTO.EntityDTO.ProductDTO>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
+
 <!--content-->
 <div class="content-top ">
     <div class="container ">
         <div class="spec ">
-            <h3>Məhsullarımız</h3>
+            <h3>Endirimli Məhsullarımız</h3>
             <div class="ser-t">
                 <b></b>
                 <span><i></i></span>
@@ -16,7 +18,7 @@
             </div>
         </div>
         <div class="tab-head ">
-           @await Component.InvokeAsync("CategoryList")
+            @await Component.InvokeAsync("CategoryList")
             <div class=" tab-content tab-content-t ">
                 <div class="tab-pane active text-style" id="tab1">
                     <div class=" con-w3l">
@@ -26,10 +28,8 @@
                                 <div class="col-m">
                                     <a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
                                         <img src="@item.ImageURL" class="img-responsive" alt="">
-                                        @if (item.Status == "Endirimli")
-                                        {
-                                            <div class="offer"><p><span>@item.Status</span></p></div>
-                                        }
+
+                                        <div class="offer"><p><span>@item.Status</span></p></div>
                                     </a>
                                     <div class="mid-1">
                                         <div class="women">
@@ -37,10 +37,7 @@
                                         </div>
                                         <div class="mid-2">
                                             <p>
-                                                @if (item.Status == "Endirimli")
-                                                {
-                                                    <label>@item.Discount azn</label>
-                                                }
+                                                <label>@item.Discount azn</label>
                                                 <em class="item_price">@item.Price azn</em>
                                             </p>
                                             <div class="block">

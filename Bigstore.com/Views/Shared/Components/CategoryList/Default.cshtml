@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DTO.EntityDTO.CategoryDTO>
+
+
+<nav class="nav-sidebar">
+    <ul class="nav tabs ">
+        @foreach (var item in Model)
+        {
+            <li class=""><a href="#tab4" data-toggle="tab">@item.Name</a></li>
+
+        }
+    </ul>
+</nav>

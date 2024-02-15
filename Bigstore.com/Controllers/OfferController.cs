@@ -3,19 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bigstore.com.Controllers
 {
-    public class HomeController : Controller
+    public class OfferController : Controller
     {
         private readonly IProductService _productService;
 
-        public HomeController(IProductService productService)
+        public OfferController(IProductService productService)
         {
             _productService = productService;
         }
 
         public IActionResult Index()
         {
-            var values = _productService.GetAll();
-            return View(values.OrderByDescending(r=>r.ID));
+            var values = _productService.GetAll().Where(x=>x.Status=="Endirimli");
+            return View(values.OrderByDescending(r => r.ID));
         }
     }
 }

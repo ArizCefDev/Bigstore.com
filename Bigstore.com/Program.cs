@@ -25,6 +25,8 @@ builder.Services.AddSingleton(mapcon.CreateMapper());
 //Services
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 var app = builder.Build();
 

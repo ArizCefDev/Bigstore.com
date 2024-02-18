@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DTO.EntityDTO.AboutDTO>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="about-w3 ">
+
+
+    <!--about-->
+    <div class="container">
+        <div class="about">
+            <div class="spec ">
+                <h3>Haqqımızda</h3>
+                <div class="ser-t">
+                    <b></b>
+                    <span><i></i></span>
+                    <b class="line"></b>
+                </div>
+            </div>
+
+            @foreach(var item in Model)
+            {
+                <div class="col-md-4 about-right">
+                    <img class="img-responsive" src="@item.ImageURL1" alt="">
+                </div>
+                <div class="col-md-4 about-left">
+                    <p>@item.Text</p>
+                </div>
+                <div class="col-md-4 about-right">
+                    <img class="img-responsive" src="@item.ImageURL2" alt="">
+                </div>
+            }
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!--//about-->
+
+</div>
+<!-- // Terms of use -->

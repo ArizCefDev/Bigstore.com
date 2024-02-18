@@ -12,9 +12,13 @@ namespace Bigstore.com.Controllers
             _productService = productService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string Search)
         {
-            var values = _productService.GetAll();
+            var values = from a in _productService.GetAll() select a;
+            if (!string.IsNullOrEmpty(Search))
+            {
+                values = values.Where(con => con.Title.ToLower().Contains(Search.ToLower()));
+            }
             return View(values.OrderByDescending(r=>r.ID));
         }
     }

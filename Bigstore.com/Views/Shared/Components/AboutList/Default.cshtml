@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DTO.EntityDTO.AboutDTO>
+
+
+<div class="col-md-3 footer-grid">
+    <h3>Haqqımızda</h3>
+    <p>
+        @foreach (var item in Model)
+        {
+        <p>
+                @item.Text
+        </p>
+        }
+    </p>
+</div>

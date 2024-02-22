@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DTO.EntityDTO.CategoryDTO>
+
+
+
+<div class="col-md-3 footer-grid ">
+    <h3>Kateqoriyalar</h3>
+    <ul>
+        @foreach (var item in Model.Take(5))
+        {
+
+            <li><a href="shipping.html">@item.Name</a></li>
+        }
+
+    </ul>
+</div>
+<div class="col-md-3 footer-grid ">
+    <h3>Kateqoriyalar</h3>
+    <ul>
+        @foreach (var item in Model.Skip(5).Take(5))
+        {
+
+            <li><a href="shipping.html">@item.Name</a></li>
+        }
+
+
+    </ul>
+</div>

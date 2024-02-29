@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DTO.EntityDTO.MessageDTO>
+
+<ul class="nofitications-dropdown">
+	<li class="dropdown head-dpdn">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">@ViewBag.MessageCount</span></a>
+		<ul class="dropdown-menu">
+			<li>
+				<div class="notification_header">
+					<h3>Yeni @ViewBag.MessageCount mesajınız var</h3>
+				</div>
+			</li>
+			@foreach (var item in Model.Take(5))
+			{
+				<li>
+					<a href="/Admin/MessagesIndex/">
+						<div class="notification_desc">
+							@if (item.Text.Length>30)
+							{
+								<p>@item.Text.Remove(29)...</p>
+							}
+							else
+							{
+								<p>@item.Text</p>
+							}
+							<p><span>@item.CreateDate</span></p>
+						</div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+			}
+			<li>
+				<div class="notification_bottom">
+					<a href="/Admin/MessagesIndex/">Hamısını gör</a>
+				</div>
+			</li>
+		</ul>
+	</li>
+</ul>

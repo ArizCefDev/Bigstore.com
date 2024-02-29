@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<partial name="~/Views/AdminPartials/HeaderPartial.cshtml" />
+
+<body class="cbp-spmenu-push">
+    <div class="main-content">
+        <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+            <!--left-fixed -navigation-->
+            <partial name="~/Views/AdminPartials/SideBarPartial.cshtml" />
+
+        </div>
+        <!--left-fixed -navigation-->
+        <!-- header-starts -->
+        <partial name="~/Views/AdminPartials/NavBarPartial.cshtml" />
+        <!-- //header-ends -->
+        <!-- main content start-->
+        @RenderBody()
+        <!--footer-->
+
+        <partial name="~/Views/AdminPartials/FooterPartial.cshtml" />
+        <!--//footer-->
+    </div>
+
+    <partial name="~/Views/AdminPartials/ScriptPartial.cshtml" />
+
+
+</body>
+</html>

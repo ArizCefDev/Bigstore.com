@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DTO.EntityDTO.CategoryDTO>
+
+@{
+    ViewData["Title"] = "CategoryIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="tables">
+            <h2 class="title1">Kateqoriyalar</h2>
+            <div class="table-responsive bs-example widget-shadow">
+                <h4><a href="/Admin/CategoryAdd/" class="btn btn-primary"><i class="fa fa-plus"></i></a></h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adı</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.ID</th>
+                                <td>@item.Name</td>
+                                <td>
+                                    <a href="/Admin/CategoryDelete/@item.ID/" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

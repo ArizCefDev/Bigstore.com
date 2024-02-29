@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DTO.EntityDTO.ContactDTO>
+
+@{
+    ViewData["Title"] = "ContactIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="tables">
+            <h2 class="title1">Bizimlə Əlaqə</h2>
+            <div class="table-responsive bs-example widget-shadow">
+                <h4><a href="/Admin/ContactAdd/" class="btn btn-primary"><i class="fa fa-plus"></i></a></h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Foto 1</th>
+                            <th>Ünvan</th>
+                            <th>Mətn</th>
+                            <th>Email</th>
+                            <th>Telefon</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.ID</th>
+                                <td><img src="@item.ImageURL" style="width:100px; height:100px;" /></td>
+                                <td>@item.Address</td>
+                                <td>@item.Text</td>
+                                <td>@item.Mail</td>
+                                <td>@item.Phone</td>
+                                <td>
+                                    <a href="/Admin/ContactDelete/@item.ID/" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

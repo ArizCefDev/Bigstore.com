@@ -30,7 +30,10 @@
                         <li><a href="/Contact/Index/" class="hyper"> <span>Bizimlə Əlaqə</span></a></li>
                         <li><a href="/Login/SignIn/" class="hyper"> <span>Daxil ol</span></a></li>
                         <li><a href="/Login/SignUp/" class="hyper"> <span>Qeydiyyat</span></a></li>
-                        <li><a href="/Admin/Index/" class="hyper"> <span>Admin</span></a></li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a href="/Admin/Index/" class="hyper"> <span>Admin</span></a></li>
+                        }
                     </ul>
                 </div>
             </nav>

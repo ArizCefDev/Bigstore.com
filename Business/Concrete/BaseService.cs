@@ -24,28 +24,28 @@ namespace Business.Concrete
             _dBSet = dBContext.Set<T>();
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             var ent = _dBSet.Find(id);
             _dBSet.Remove(ent);
             _dBContext.SaveChanges();
         }
 
-        public List<RsDTO> GetAll()
+        public virtual List<RsDTO> GetAll()
         {
             var ent = _dBSet.ToList();
             var rsdto = _mapper.Map<List<RsDTO>>(ent);
             return rsdto;
         }
 
-        public RsDTO GetById(int id)
+        public virtual RsDTO GetById(int id)
         {
             var ent = _dBSet.Find(id);
             var rsdto = _mapper.Map<RsDTO>(ent);
             return rsdto;
         }
 
-        public RsDTO Insert(RqDTO dto)
+        public virtual RsDTO Insert(RqDTO dto)
         {
             var ent = _mapper.Map<T>(dto);
 
@@ -56,7 +56,7 @@ namespace Business.Concrete
             return rsdto;
         }
 
-        public void Update(RqDTO dto)
+        public virtual void Update(RqDTO dto)
         {
             var ent = _mapper.Map<T>(dto);
             _dBSet.Update(ent);

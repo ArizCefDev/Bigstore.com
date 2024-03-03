@@ -13,7 +13,8 @@ namespace DTO.EntityDTO
         public string? Salt { get; set; }
         public string? Password { get; set; }
         public string? PasswordHash { get; set; }
-       
-        
-    }
+		public int RoleID { get; set; }
+		public string? RoleName { get; set; }
+
+	}
 }

@@ -1,4 +1,5 @@
 ﻿using DataAccess.Entity;
+using Helper.CryptoFile;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,5 +24,38 @@ namespace DataAccess.Context
         {
 
         }
-    }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+
+			modelBuilder.Entity<Role>().HasData(
+				new Role
+				{
+					ID = 1,
+					Name = "Admin",
+				});
+
+			modelBuilder.Entity<Role>().HasData(
+				new Role
+				{
+					ID = 2,
+					Name = "User",
+				}
+				);
+
+			var salt = Crypto.GenerateSalt();
+
+			modelBuilder.Entity<User>().HasData(
+				new User
+				{
+					ID = 1,
+					Username = "Admin",
+					Salt = salt,
+					PasswordHash = Crypto.GenerateSHA256Hash("Admin123", salt),
+					RoleID = 1,
+					
+				}
+				);
+		}
+	}
 }

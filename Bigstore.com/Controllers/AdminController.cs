@@ -1,10 +1,14 @@
 ﻿using Business.Abstract;
+using DataAccess.Context;
 using DataAccess.Entity;
 using DTO.EntityDTO;
+using Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bigstore.com.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IAboutService _aboutService;
@@ -12,19 +16,28 @@ namespace Bigstore.com.Controllers
         private readonly IContactService _contactService;
         private readonly IMessageService _messageService;
         private readonly IProductService _productService;
+        private readonly AppDBContext _dBContext;
 
-        public AdminController(IAboutService aboutService, ICategoryService categoryService, IContactService contactService, IMessageService messageService, IProductService productService)
+        public AdminController(IAboutService aboutService, ICategoryService categoryService, IContactService contactService, IMessageService messageService, IProductService productService, AppDBContext dBContext)
         {
             _aboutService = aboutService;
             _categoryService = categoryService;
             _contactService = contactService;
             _messageService = messageService;
             _productService = productService;
+            _dBContext = dBContext;
         }
+
 
         //Dashboard
         public IActionResult Index()
         {
+            ViewBag.category = _dBContext.Categories.Count();
+            ViewBag.message = _dBContext.Messages.Count();
+            ViewBag.products = _dBContext.Products.Count();
+
+            ViewBag.discountProduct = _dBContext.Products.Where(x => x.Status == "Endirimli").Count();
+            ViewBag.product = _dBContext.Products.Where(x => x.Status != "Endirimli").Count();
             return View();
         }
 
@@ -84,7 +97,7 @@ namespace Bigstore.com.Controllers
         public IActionResult MessagesIndex()
         {
             var values = _messageService.GetAll();
-            return View(values.OrderByDescending(row=>row.ID));
+            return View(values.OrderByDescending(row => row.ID));
         }
 
         public IActionResult MessagesDelete(int id)
@@ -93,31 +106,31 @@ namespace Bigstore.com.Controllers
             return RedirectToAction("MessagesIndex");
         }
 
-		//Contact
-		public IActionResult ContactIndex()
-		{
-			var values = _contactService.GetAll();
-			return View(values);
-		}
+        //Contact
+        public IActionResult ContactIndex()
+        {
+            var values = _contactService.GetAll();
+            return View(values);
+        }
 
-		[HttpGet]
-		public IActionResult ContactAdd()
-		{
-			return View();
-		}
+        [HttpGet]
+        public IActionResult ContactAdd()
+        {
+            return View();
+        }
 
-		[HttpPost]
-		public IActionResult ContactAdd(ContactDTO p)
-		{
-			_contactService.Insert(p);
-			return RedirectToAction("ContactIndex");
-		}
+        [HttpPost]
+        public IActionResult ContactAdd(ContactDTO p)
+        {
+            _contactService.Insert(p);
+            return RedirectToAction("ContactIndex");
+        }
 
-		public IActionResult ContactDelete(int id)
-		{
-			_contactService.Delete(id);
-			return RedirectToAction("ContactIndex");
-		}
+        public IActionResult ContactDelete(int id)
+        {
+            _contactService.Delete(id);
+            return RedirectToAction("ContactIndex");
+        }
 
         //Product
         public IActionResult ProductIndex()
@@ -145,5 +158,19 @@ namespace Bigstore.com.Controllers
             _productService.Delete(id);
             return RedirectToAction("ProductIndex");
         }
+
+        //User
+        //public IActionResult UserIndex()
+        //{
+        //	var values = _messageService.GetAll();
+        //	return View(values.OrderByDescending(row => row.ID));
+        //}
+
+        //public IActionResult UserDelete(int id)
+        //{
+        //	_messageService.Delete(id);
+        //	return RedirectToAction("UserIndex");
+        //}
+
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model DTO.EntityDTO.UserDTO
 @{
     ViewData["Title"] = "SignIn";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
@@ -10,15 +10,15 @@
 	<div class="main-agileits">
 		<div class="form-w3agile">
 			<h3>Giriş Et Formu</h3>
-			<form action="#" method="post">
+			<form method="post">
 				<div class="key">
 					<i class="fa fa-envelope" aria-hidden="true"></i>
-					<input type="text" value="Email" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<input type="text" asp-for="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
 					<div class="clearfix"></div>
 				</div>
 				<div class="key">
 					<i class="fa fa-lock" aria-hidden="true"></i>
-					<input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+					<input type="password" asp-for="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
 					<div class="clearfix"></div>
 				</div>
 				<input type="submit" value="Login">

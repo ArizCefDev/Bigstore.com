@@ -13,6 +13,6 @@ namespace DataAccess.Entity
         public string? Salt { get; set; }
         public string? PasswordHash { get; set; }
         public int RoleID { get; set; }
-        public Role Role { get; set; }
+        public Role? Role { get; set; }
     }
 }

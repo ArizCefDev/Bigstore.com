@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DTO.EntityDTO.UserDTO>
+@{
+    ViewData["Title"] = "UserIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="tables">
+            <h2 class="title1">İstifadəçilər</h2>
+            <div class="table-responsive bs-example widget-shadow">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>İstifadəçi adı</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.ID</th>
+                                <td>@item.Username</td>
+                                <td>
+                                    <a href="/Admin/UserDelete/@item.ID/" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

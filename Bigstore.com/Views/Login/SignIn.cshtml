@@ -12,21 +12,21 @@
 			<h3>Giriş Et Formu</h3>
 			<form method="post">
 				<div class="key">
-					<i class="fa fa-envelope" aria-hidden="true"></i>
-					<input type="text" asp-for="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<input type="text" asp-for="Username"  required="" placeholder="İstifadəçi adınızı daxil edin">
 					<div class="clearfix"></div>
 				</div>
 				<div class="key">
 					<i class="fa fa-lock" aria-hidden="true"></i>
-					<input type="password" asp-for="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+					<input type="password" asp-for="Password" required="" placeholder="Şifrənizi daxil edin">
 					<div class="clearfix"></div>
 				</div>
-				<input type="submit" value="Login">
+				<input type="submit" value="Daxil ol">
 			</form>
 		</div>
 		<div class="forg">
-			<a href="#" class="forg-left">Forgot Password</a>
-			<a href="register.html" class="forg-right">Register</a>
+			<a href="#" class="forg-left">Şifrəni unutmusuz?</a>
+			<a href="/Login/SignUp/" class="forg-right">Qeydiyyat</a>
 			<div class="clearfix"></div>
 		</div>
 	</div>
